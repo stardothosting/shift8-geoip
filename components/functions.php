@@ -29,7 +29,7 @@ function shift8_geoip_init() {
                 // Unset the existing session, re-set it with a shorter expiration time
                 clear_shift8_geoip_cookie();
                 // Set the ip address but clear any GeoLocation values for now
-                $cookie_newdata = shift8_ipintel_encrypt($encryption_key, esc_attr($cookie_data[0]) . '_ignore_ignore';
+                $cookie_newdata = shift8_ipintel_encrypt($encryption_key, esc_attr($cookie_data[0]) . '_ignore_ignore');
 				setcookie('shift8_geoip', $cookie_newdata, strtotime('+1 hour'));
 				
             }
