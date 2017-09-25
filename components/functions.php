@@ -7,8 +7,8 @@ function shift8_geoip_init() {
         // Get the end-user's IP address
         $ip_address = shift8_geoip_get_ip();
 
-        if (session_status() == PHP_SESSION_NONE) {
-                session_start();
+        if (!session_id()) {
+            session_start();
         }
 
         // If the session isnt set
