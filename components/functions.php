@@ -7,31 +7,27 @@ function shift8_geoip_init() {
         // Get the end-user's IP address
         $ip_address = shift8_geoip_get_ip();
 
-        if (!session_id()) {
-            session_start();
-        }
         // If the session isnt set
-        if (!isset($_COOKIE['shift8_geoip'])) {
+        if (!isset($_SESSION['shift8_geoip'])) {
+            session_start();
             // Only set the session if a valid IP address was found
             if ($ip_address) {
                 $query = SHIFT8_GEOIP_IPAPI::query($ip_address);
-                $cookie_data = $ip_address . '_' . $query->lat . '_' . $query->lon;
-                setcookie( 'shift8_geoip', $cookie_data, strtotime( '+1 day' ), '/');
+                $session_data = $ip_address . '_' . $query->lat . '_' . $query->lon . '_' . strtotime('+1 day');
+                $_SESSION['shift8_geoip'] = $session_data;
             }
         // If the session is set
         } else {
             // if session is set, validate it and remove if not valid
-            $cookie_data = explode('_', $_COOKIE['shift8_geoip']);
+            $session_data = explode('_', $_SESSION['shift8_geoip']);
             // If the ip address doesnt match the value of the session OR if the timestamp of the session is in the past
-            if (esc_attr($cookie_data[0]) != $ip_address) {
+            if (esc_attr($session_data[0]) != $ip_address || strtotime(esc_attr($session_data[3])) < time()) {
                 clear_shift8_geoip_cookie();
-            } else if (esc_attr($cookie_data[1]) == 'error_detected') {
+            } else if (esc_attr($session_data[1]) == 'error_detected') {
                 // Unset the existing session, re-set it with a shorter expiration time
                 clear_shift8_geoip_cookie();
-                // Set the ip address but clear any IP Intel values for now
-                $cookie_newdata = esc_attr($cookie_data[0]) . '_ignore_ignore';
-                // Generally if there is an error detected, its likely because you exceeded the threshold. Wait an hour before doing this process again
-                setcookie( 'shift8_geoip', $cookie_newdata, strtotime( '+1 hour' ));
+                // Set the ip address but clear any GeoLocation values for now
+                $cookie_newdata = esc_attr($session_data[0]) . '_ignore_ignore_' . strtotime('+1 hour');
             }
         }
     }
@@ -40,8 +36,7 @@ add_action('init', 'shift8_geoip_init', 1);
 
 // Common function to clear the session 
 function clear_shift8_geoip_cookie() {
-    unset($_COOKIE['shift8_geoip']);
-    setcookie('shift8_geoip', '',  time()-3600, '/');
+    unset($_SESSION['shift8_geoip']);
 }
 
 function shift8_geoip_get_ip() {
