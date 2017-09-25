@@ -18,13 +18,17 @@ function shift8_geoip_init() {
                 $cookie_data = shift8_geoip_encrypt($encryption_key, $ip_address . '_' . $query->lat . '_' . $query->lon);
                 setcookie('shift8_geoip', $cookie_data, strtotime('+1 day'));
             }
+
         // If the cookie is set
         } else {
             // if session is set, validate it and remove if not valid
             $cookie_data = explode('_', shift8_geoip_decrypt($encryption_key, $_COOKIE['shift8_geoip']));
+
             // If the ip address doesnt match the value of the session OR if the timestamp of the session is in the past
             if (esc_attr($cookie_data[0]) != $ip_address) {
                 clear_shift8_geoip_cookie();
+
+            // If there's an error set in the cookie, clear and then set a temp cookie that expires sooner
             } else if (esc_attr($cookie_data[1]) == 'error') {
                 // Unset the existing session, re-set it with a shorter expiration time
                 clear_shift8_geoip_cookie();
@@ -82,14 +86,15 @@ function shift8_geoip_get_ip() {
     return isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : false;
 }
 
-function shift8_geoip_validate_ip($ip)
-{
+// Validate IP address using filter_var function
+function shift8_geoip_validate_ip($ip) {
 	if (filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4 | FILTER_FLAG_NO_PRIV_RANGE | FILTER_FLAG_NO_RES_RANGE) === false) {
 		return false;
 	}
 	return true;
 }
 
+// Validate admin options
 function shift8_geoip_check_options() {
     // If enabled is not set 
     if(esc_attr( get_option('shift8_geoip_enabled') ) != 'on') return false;
