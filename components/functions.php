@@ -8,7 +8,7 @@ function shift8_geoip_init() {
         $ip_address = shift8_geoip_get_ip();
 
         if (!session_id()) {
-            session_start();
+            add_action( 'init', 'session_start' );
         }
 
         // If the session isnt set
