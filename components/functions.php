@@ -15,13 +15,13 @@ function shift8_geoip_init() {
             // Only set the session if a valid IP address was found
             if ($ip_address) {
                 $query = SHIFT8_GEOIP_IPAPI::query($ip_address);
-                $cookie_data = shift8_ipintel_encrypt($encryption_key, $ip_address . '_' . $query->lat . '_' . $query->lon);
+                $cookie_data = shift8_geoip_encrypt($encryption_key, $ip_address . '_' . $query->lat . '_' . $query->lon);
                 setcookie('shift8_geoip', $cookie_data, strtotime('+1 day'));
             }
         // If the cookie is set
         } else {
             // if session is set, validate it and remove if not valid
-            $cookie_data = explode('_', shift8_ipintel_decrypt($encryption_key, $_COOKIE['shift8_geoip']));
+            $cookie_data = explode('_', shift8_geoip_decrypt($encryption_key, $_COOKIE['shift8_geoip']));
             // If the ip address doesnt match the value of the session OR if the timestamp of the session is in the past
             if (esc_attr($cookie_data[0]) != $ip_address) {
                 clear_shift8_geoip_cookie();
@@ -29,7 +29,7 @@ function shift8_geoip_init() {
                 // Unset the existing session, re-set it with a shorter expiration time
                 clear_shift8_geoip_cookie();
                 // Set the ip address but clear any GeoLocation values for now
-                $cookie_newdata = shift8_ipintel_encrypt($encryption_key, esc_attr($cookie_data[0]) . '_ignore_ignore');
+                $cookie_newdata = shift8_geoip_encrypt($encryption_key, esc_attr($cookie_data[0]) . '_ignore_ignore');
 				setcookie('shift8_geoip', $cookie_newdata, strtotime('+1 hour'));
 				
             }
