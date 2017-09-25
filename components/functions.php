@@ -7,9 +7,12 @@ function shift8_geoip_init() {
         // Get the end-user's IP address
         $ip_address = shift8_geoip_get_ip();
 
+        if (session_status() == PHP_SESSION_NONE) {
+                session_start();
+        }
+
         // If the session isnt set
         if (!isset($_SESSION['shift8_geoip'])) {
-            session_start();
             // Only set the session if a valid IP address was found
             if ($ip_address) {
                 $query = SHIFT8_GEOIP_IPAPI::query($ip_address);
