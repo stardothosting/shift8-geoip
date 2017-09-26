@@ -16,7 +16,7 @@ function shift8_geoip_init() {
             if ($ip_address) {
                 $query = SHIFT8_GEOIP_IPAPI::query($ip_address);
                 $cookie_data = shift8_geoip_encrypt($encryption_key, $ip_address . '_' . $query->lat . '_' . $query->lon);
-                setcookie('shift8_geoip', $cookie_data, strtotime('+1 day'));
+                setcookie('shift8_geoip', $cookie_data, strtotime('+1 day'), '/');
             }
 
         // If the cookie is set
