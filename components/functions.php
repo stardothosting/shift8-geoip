@@ -34,7 +34,7 @@ function shift8_geoip_init() {
                 clear_shift8_geoip_cookie();
                 // Set the ip address but clear any GeoLocation values for now
                 $cookie_newdata = shift8_geoip_encrypt($encryption_key, esc_attr($cookie_data[0]) . '_ignore_ignore');
-				setcookie('shift8_geoip', $cookie_newdata, strtotime('+1 hour'));
+				setcookie('shift8_geoip', $cookie_newdata, strtotime('+1 hour'), '/');
 				
             }
         }
