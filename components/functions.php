@@ -45,7 +45,7 @@ add_action('init', 'shift8_geoip_init', 1);
 // Common function to clear the session 
 function clear_shift8_geoip_cookie() {
     unset($_COOKIE['shift8_geoip']);
-	setcookie('shift8_geoip', '',  time()-3600, '/');
+    setcookie('shift8_geoip', '',  time()-3600, '/');
 }
 
 // Function to encrypt session data
