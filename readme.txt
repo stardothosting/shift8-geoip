@@ -12,7 +12,7 @@ Plugin that utilizes [ip-api](http://ip-api.com) to get geolocation coordinates 
 
 == Want to see the plugin in action? ==
 
-You can view two example sites where this plugin is live :
+You can view three example sites where this plugin is live :
 
 - Example Site 1 : [Wordpress Hosting](https://www.stackstar.com "Wordpress Hosting")
 - Example Site 2 : [Web Design in Toronto](https://www.shift8web.ca "Web Design in Toronto")
