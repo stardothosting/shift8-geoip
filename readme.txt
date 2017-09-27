@@ -4,7 +4,7 @@
 * Tags: geolocation, geo location, geographic location, ip geolocation, ip address location, ip location, ip address location, ip address, ip tracking, geo ip location
 * Requires at least: 3.0.1
 * Tested up to: 4.8
-* Stable tag: 1.00
+* Stable tag: 1.01
 * License: GPLv3
 * License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -47,3 +47,6 @@ Try clearing all cookies and re-visit the website. Then examine the cookies set 
 
 = 1.0 =
 * Stable version created
+
+= 1.01 =
+* Switched from stored session variable to encrypted cookie using wp_salt function. This is to easily allow development options to read and process the cookie data
