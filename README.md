@@ -63,7 +63,8 @@ function shift8_geoip_decrypt($key, $garble) {
     } else {
         return false;
     }
-}```
+}
+```
 
 So to actually use the above function, you could do the following :
 
