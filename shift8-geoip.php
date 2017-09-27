@@ -31,7 +31,7 @@ if (!function_exists('shift8_main_page')) {
 function shift8_geoip_settings_page() {
 ?>
 <div class="wrap">
-<h2>Shift8 IP Intel Settings</h2>
+<h2>Shift8 Geo IP Location Settings</h2>
 <?php if (is_admin()) { ?>
 <form method="post" action="options.php">
     <?php settings_fields( 'shift8-geoip-settings-group' ); ?>
@@ -55,7 +55,7 @@ function shift8_geoip_settings_page() {
     </span></td>
 	</tr>
 	<tr valign="top">
-	<td>Enable IP Intel : </td>
+	<td>Enable GEO IP Location : </td>
 	<td>
 	<?php 
 	if (esc_attr( get_option('shift8_geoip_enabled') ) == 'on') { 
