@@ -3,7 +3,7 @@
  * Plugin Name: Shift8 GeoIP Location
  * Plugin URI: https://github.com/stardothosting/shift8-geoip
  * Description: Plugin that determines your geographic location based on your IP address and stores it in a session variable that can be accessed programically
- * Version: 1.02
+ * Version: 1.03
  * Author: Shift8 Web 
  * Author URI: https://www.shift8web.ca
  * License: GPLv3
