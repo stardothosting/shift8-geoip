@@ -15,7 +15,7 @@ function shift8_geoip_init() {
             // Only set the session if a valid IP address was found
             if ($ip_address) {
                 $query = SHIFT8_GEOIP_IPAPI::query($ip_address);
-                $cookie_data = shift8_geoip_encrypt($encryption_key, $ip_address . '_' . $query->lat . '_' . $query->lon);
+                $cookie_data = shift8_geoip_encrypt($encryption_key, $ip_address . '_' . $query->lat . '_' . $query->lon . '_' . $query->countryCode);
                 setcookie('shift8_geoip', $cookie_data, strtotime('+1 day'), '/');
             }
 
