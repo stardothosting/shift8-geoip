@@ -4,7 +4,7 @@
 * Tags: geolocation, geo location, geographic location, ip geolocation, ip address location, ip location, ip address location, ip address, ip tracking, geo ip location
 * Requires at least: 3.0.1
 * Tested up to: 4.8
-* Stable tag: 1.03
+* Stable tag: 1.04
 * License: GPLv3
 * License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -91,3 +91,6 @@ You can read more about the wp_salt function by [clicking here](https://codex.wo
 
 = 1.03 =
 * Better error checking with geoip class and returned array
+
+= 1.04 =
+* If no valid IP is found in the get_ip function, the last return value still needs to be chcecked if a valid IP, otherwise return false

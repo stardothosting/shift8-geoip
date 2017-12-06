@@ -83,7 +83,7 @@ function shift8_geoip_get_ip() {
             }
         }
     }
-    return isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : false;
+    return isset($_SERVER['REMOTE_ADDR']) && gga_geoip_validate_ip($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : false;
 }
 
 // Validate IP address using filter_var function
