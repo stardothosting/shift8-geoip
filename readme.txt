@@ -3,7 +3,7 @@
 * Donate link: https://www.shift8web.ca
 * Tags: geolocation, geo location, geographic location, ip geolocation, ip address location, ip location, ip address location, ip address, ip tracking, geo ip location
 * Requires at least: 3.0.1
-* Tested up to: 4.8
+* Tested up to: 4.9
 * Stable tag: 1.04
 * License: GPLv3
 * License URI: http://www.gnu.org/licenses/gpl-3.0.html
