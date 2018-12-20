@@ -3,8 +3,8 @@
 * Donate link: https://www.shift8web.ca
 * Tags: geolocation, geo location, geographic location, ip geolocation, ip address location, ip location, ip address location, ip address, ip tracking, geo ip location
 * Requires at least: 3.0.1
-* Tested up to: 4.9
-* Stable tag: 1.05
+* Tested up to: 5.0.2
+* Stable tag: 1.06
 * License: GPLv3
 * License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -97,3 +97,6 @@ You can read more about the wp_salt function by [clicking here](https://codex.wo
 
 = 1.05 =
 * Now including country code in geoip encrypted cookie
+
+= 1.06 =
+* Wordpress 5 compatibility
