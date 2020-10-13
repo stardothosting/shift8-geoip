@@ -8,7 +8,7 @@
 * License: GPLv3
 * License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-Plugin that utilizes [ip-api](http://ip-api.com) to get geolocation coordinates based on the end-users' IP address 
+Plugin that utilizes [ip-api](http://ip-api.com) to get geolocation coordinates based on the end-users' IP address. Read the [blog post detailing how to interact with the plugin](https://www.shift8web.ca/2018/01/wordpress-plugin-get-geolocation-coordinates-visitors-ip-address/).
 
 == Want to see the plugin in action? ==
 
